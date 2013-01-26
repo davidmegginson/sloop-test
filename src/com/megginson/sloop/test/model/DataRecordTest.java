@@ -103,10 +103,15 @@ public class DataRecordTest extends TestCase {
 	public void testEquals() {
 		DataRecord dataRecord = new DataRecord(mDataRecord);
 		assertEquals(dataRecord, mDataRecord);
+		assertEquals(mDataRecord, dataRecord);
 		
 		dataRecord.get(1).setValue(VALUE4);
 		assertFalse(dataRecord.equals(mDataRecord));
 		assertFalse(mDataRecord.equals(dataRecord));
+		
+		assertEquals(mDataRecord, mDataRecord);
+		assertFalse(mDataRecord.equals(new Object()));
+		assertFalse(mDataRecord.equals(null));
 	}
 
 	public void testHashCode() {

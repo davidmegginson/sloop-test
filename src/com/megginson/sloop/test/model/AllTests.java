@@ -8,6 +8,7 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite(AllTests.class.getName());
 		//$JUnit-BEGIN$
+		suite.addTestSuite(DataCollectionTest.class);
 		suite.addTestSuite(DataEntryTest.class);
 		suite.addTestSuite(DataRecordTest.class);
 		//$JUnit-END$
