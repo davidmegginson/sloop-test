@@ -56,6 +56,13 @@ public class DataCollectionTest extends TestCase {
 			}
 		}
 	}
+	
+	public void testSearch() {
+		assertEquals(-1, mDataCollection.search("foo", 0));
+		assertEquals(0, mDataCollection.search("0,0", 0));
+		assertEquals(-1, mDataCollection.search("0,0", 1));
+		assertEquals(3, mDataCollection.search("3,1", 0));
+	}
 
 	public void testEquals() {
 		DataCollection dataCollection = new DataCollection(mDataCollection);
