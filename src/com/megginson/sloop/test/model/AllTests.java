@@ -11,6 +11,7 @@ public class AllTests {
 		suite.addTestSuite(DataCollectionTest.class);
 		suite.addTestSuite(DataEntryTest.class);
 		suite.addTestSuite(DataRecordTest.class);
+		suite.addTestSuite(BookmarkTest.class);
 		//$JUnit-END$
 		return suite;
 	}
