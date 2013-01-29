@@ -1,4 +1,4 @@
-package com.megginson.sloop.test.model;
+package com.megginson.sloop.test.io;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -8,9 +8,7 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite(AllTests.class.getName());
 		//$JUnit-BEGIN$
-		suite.addTestSuite(DataCollectionTest.class);
-		suite.addTestSuite(DataEntryTest.class);
-		suite.addTestSuite(DataRecordTest.class);
+		suite.addTestSuite(DataCollectionIOTest.class);
 		//$JUnit-END$
 		return suite;
 	}

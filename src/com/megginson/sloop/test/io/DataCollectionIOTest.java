@@ -1,4 +1,4 @@
-package com.megginson.sloop.test.model;
+package com.megginson.sloop.test.io;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,9 +10,9 @@ import android.content.res.AssetManager;
 import android.test.InstrumentationTestCase;
 
 import com.megginson.sloop.model.DataCollection;
-import com.megginson.sloop.model.DataCollectionIO;
 import com.megginson.sloop.model.DataEntry;
 import com.megginson.sloop.model.DataRecord;
+import com.megginson.sloop.model.io.DataCollectionIO;
 
 public class DataCollectionIOTest extends InstrumentationTestCase {
 
