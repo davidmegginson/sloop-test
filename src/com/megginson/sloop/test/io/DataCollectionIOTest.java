@@ -9,10 +9,10 @@ import java.nio.charset.Charset;
 import android.content.res.AssetManager;
 import android.test.InstrumentationTestCase;
 
+import com.megginson.sloop.io.DataCollectionIO;
 import com.megginson.sloop.model.DataCollection;
 import com.megginson.sloop.model.DataEntry;
 import com.megginson.sloop.model.DataRecord;
-import com.megginson.sloop.model.io.DataCollectionIO;
 
 public class DataCollectionIOTest extends InstrumentationTestCase {
 
