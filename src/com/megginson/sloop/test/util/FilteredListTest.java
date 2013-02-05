@@ -1,11 +1,11 @@
-package com.megginson.sloop.test.model;
+package com.megginson.sloop.test.util;
 
 import java.util.Arrays;
 
 import junit.framework.TestCase;
 
-import com.megginson.sloop.model.FilteredList;
-import com.megginson.sloop.model.ListItemFilter;
+import com.megginson.sloop.util.FilteredList;
+import com.megginson.sloop.util.ListItemFilter;
 
 public class FilteredListTest extends TestCase {
 	

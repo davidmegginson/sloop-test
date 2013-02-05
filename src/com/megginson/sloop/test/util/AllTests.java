@@ -1,4 +1,6 @@
-package com.megginson.sloop.test;
+package com.megginson.sloop.test.util;
+
+import com.megginson.sloop.test.util.FilteredListTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -8,9 +10,7 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite(AllTests.class.getName());
 		//$JUnit-BEGIN$
-		suite.addTest(com.megginson.sloop.test.io.AllTests.suite());
-		suite.addTest(com.megginson.sloop.test.model.AllTests.suite());
-		suite.addTest(com.megginson.sloop.test.util.AllTests.suite());
+		suite.addTestSuite(FilteredListTest.class);
 		//$JUnit-END$
 		return suite;
 	}
