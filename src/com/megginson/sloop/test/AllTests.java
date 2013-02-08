@@ -10,7 +10,6 @@ public class AllTests {
 		//$JUnit-BEGIN$
 		suite.addTest(com.megginson.sloop.test.io.AllTests.suite());
 		suite.addTest(com.megginson.sloop.test.model.AllTests.suite());
-		suite.addTest(com.megginson.sloop.test.util.AllTests.suite());
 		//$JUnit-END$
 		return suite;
 	}
