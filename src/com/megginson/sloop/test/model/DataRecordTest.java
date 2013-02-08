@@ -26,9 +26,9 @@ public class DataRecordTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		mDataRecord = new DataRecord();
-		mDataRecord.addEntry(KEY1, VALUE1);
-		mDataRecord.addEntry(KEY2, VALUE2);
-		mDataRecord.addEntry(KEY3, VALUE3);
+		mDataRecord.addEntry(KEY1, VALUE1, false);
+		mDataRecord.addEntry(KEY2, VALUE2, true);
+		mDataRecord.addEntry(KEY3, VALUE3, false);
 	}
 	
 	public void testCopyConstructor () {
@@ -46,7 +46,7 @@ public class DataRecordTest extends TestCase {
 	}
 
 	public void testAddEntry() {
-		mDataRecord.addEntry(KEY4, VALUE4);
+		mDataRecord.addEntry(KEY4, VALUE4, true);
 		assertEquals(4, mDataRecord.size());
 		assertEquals(KEY4, mDataRecord.get(3).getKey());
 		assertEquals(VALUE4, mDataRecord.get(3).getValue());

@@ -10,6 +10,7 @@ public class DataEntryTest extends TestCase {
 	
 	private final static String KEY = "test key";
 	private final static String VALUE = "test value";
+	private final static boolean HAS_FILTER = false;;
 	private final static String KEY2 = "alternative test key";
 	private final static String VALUE2 = "alternative test value";
 	
@@ -79,8 +80,9 @@ public class DataEntryTest extends TestCase {
 	
 	public void testCreator() {
 		Parcel parcel = Parcel.obtain();
-		parcel.writeString(KEY);
-		parcel.writeString(VALUE);
+		parcel.writeString(mDataEntry.getKey());
+		parcel.writeString(mDataEntry.getValue());
+		parcel.writeValue(mDataEntry.hasFilter());
 
 		parcel.setDataPosition(0);
 		DataEntry dataEntry = DataEntry.CREATOR.createFromParcel(parcel);
