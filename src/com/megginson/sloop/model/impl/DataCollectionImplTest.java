@@ -29,16 +29,16 @@ public class DataCollectionImplTest extends TestCase {
 	}
 
 	public void testSize() {
-		assertEquals(VALUES.length, mDataCollection.size());
+		assertEquals(VALUES.length, mDataCollection.getFilteredRecords().size());
 	}
 
 	public void testGet() {
-		for (int row = 0; row < VALUES.length; row++) {
-			DataRecord dataRecord = mDataCollection.get(row);
+		for (int i = 0; i < VALUES.length; i++) {
+			DataRecord dataRecord = mDataCollection.getFilteredRecords().get(i);
 			for (int col = 0; col < HEADERS.length; col++) {
 				DataEntry dataEntry = dataRecord.get(col);
 				assertEquals(HEADERS[col], dataEntry.getKey());
-				assertEquals(VALUES[row][col], dataEntry.getValue());
+				assertEquals(VALUES[i][col], dataEntry.getValue());
 			}
 		}
 	}
@@ -50,7 +50,7 @@ public class DataCollectionImplTest extends TestCase {
 	}
 
 	public void testColumnFilter() {
-		int originalSize = mDataCollection.size();
+		int originalSize = mDataCollection.getFilteredRecords().size();
 		assertNull(mDataCollection.getColumnFilter(HEADERS[1]));
 		mDataCollection.putColumnFilter(HEADERS[1], new ValueFilter() {
 			@Override
@@ -61,12 +61,12 @@ public class DataCollectionImplTest extends TestCase {
 		assertNotNull(mDataCollection.getColumnFilter(HEADERS[1]));
 		
 		// setting a filter doesn't turn on filtering
-		assertEquals(originalSize, mDataCollection.size());
+		assertEquals(originalSize, mDataCollection.getFilteredRecords().size());
 		assertEquals(originalSize, mDataCollection.sizeUnfiltered());
 		
 		// after turning on filtering, the sizes should be different
 		mDataCollection.setFiltered(true);
-		assertTrue(originalSize > mDataCollection.size());
+		assertTrue(originalSize > mDataCollection.getFilteredRecords().size());
 		assertEquals(originalSize, mDataCollection.sizeUnfiltered());
 	}
 
