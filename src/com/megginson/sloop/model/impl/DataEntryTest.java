@@ -1,36 +1,29 @@
-package com.megginson.sloop.test.model;
+package com.megginson.sloop.model.impl;
 
+import junit.framework.TestCase;
 import android.os.Parcel;
 
 import com.megginson.sloop.model.DataEntry;
-
-import junit.framework.TestCase;
 
 public class DataEntryTest extends TestCase {
 	
 	private final static String KEY = "test key";
 	private final static String VALUE = "test value";
-	private final static boolean HAS_FILTER = false;;
 	private final static String KEY2 = "alternative test key";
 	private final static String VALUE2 = "alternative test value";
 	
-	private DataEntry mDataEntry;
+	private DataEntryImpl mDataEntry;
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		mDataEntry = new DataEntry(KEY, VALUE);
+		mDataEntry = new DataEntryImpl(KEY, VALUE);
 	}
 	
-	public void testCopyConstructor () {
-		DataEntry dataEntry = new DataEntry(mDataEntry);
-		assertEquals(dataEntry, mDataEntry);
-	}
-
 	public void testHashCode() {
-		DataEntry dataEntry = new DataEntry(KEY, VALUE);
-		assertEquals(dataEntry.hashCode(), mDataEntry.hashCode());
-		dataEntry.setValue(VALUE2);
-		assertTrue(dataEntry.hashCode() != mDataEntry.hashCode());
+		DataEntryImpl dataEntryImpl = new DataEntryImpl(KEY, VALUE);
+		assertEquals(dataEntryImpl.hashCode(), mDataEntry.hashCode());
+		dataEntryImpl.setValue(VALUE2);
+		assertTrue(dataEntryImpl.hashCode() != mDataEntry.hashCode());
 	}
 
 	public void testGetKey() {
@@ -61,14 +54,14 @@ public class DataEntryTest extends TestCase {
 	public void testEqualsObject() {
 		assertEquals(mDataEntry, mDataEntry);
 
-		DataEntry dataEntry = new DataEntry(KEY, VALUE);
-		assertEquals(dataEntry, mDataEntry);
+		DataEntry dataEntryImpl = new DataEntryImpl(KEY, VALUE);
+		assertEquals(dataEntryImpl, mDataEntry);
 		
-		dataEntry = new DataEntry(KEY2, VALUE);
-		assertFalse(mDataEntry.equals(dataEntry));
+		dataEntryImpl = new DataEntryImpl(KEY2, VALUE);
+		assertFalse(mDataEntry.equals(dataEntryImpl));
 		
-		dataEntry = new DataEntry(KEY, VALUE2);
-		assertFalse(mDataEntry.equals(dataEntry));
+		dataEntryImpl = new DataEntryImpl(KEY, VALUE2);
+		assertFalse(mDataEntry.equals(dataEntryImpl));
 		
 		assertFalse(mDataEntry.equals(new Object()));
 		assertFalse(mDataEntry.equals(null));
@@ -85,8 +78,8 @@ public class DataEntryTest extends TestCase {
 		parcel.writeValue(mDataEntry.hasFilter());
 
 		parcel.setDataPosition(0);
-		DataEntry dataEntry = DataEntry.CREATOR.createFromParcel(parcel);
-		assertEquals(dataEntry, mDataEntry);
+		DataEntry dataEntryImpl = DataEntryImpl.CREATOR.createFromParcel(parcel);
+		assertEquals(dataEntryImpl, mDataEntry);
 	}
 
 }

@@ -1,11 +1,9 @@
-package com.megginson.sloop.test.model;
-
-import com.megginson.sloop.model.DataCollection;
-import com.megginson.sloop.model.DataEntry;
-import com.megginson.sloop.model.DataRecord;
-import com.megginson.sloop.model.ValueFilter;
+package com.megginson.sloop.model.impl;
 
 import junit.framework.TestCase;
+
+import com.megginson.sloop.model.DataEntry;
+import com.megginson.sloop.model.ValueFilter;
 
 public class DataCollectionTest extends TestCase {
 
@@ -17,11 +15,11 @@ public class DataCollectionTest extends TestCase {
 		{ "A3", "B", "C3" },
 	};
 
-	private DataCollection mDataCollection;
+	private DataCollectionImpl mDataCollection;
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		mDataCollection = new DataCollection(HEADERS);
+		mDataCollection = new DataCollectionImpl(HEADERS);
 		for (String row[] : VALUES) {
 			mDataCollection.addRecord(row);
 		}
@@ -33,7 +31,7 @@ public class DataCollectionTest extends TestCase {
 
 	public void testGet() {
 		for (int row = 0; row < VALUES.length; row++) {
-			DataRecord dataRecord = mDataCollection.get(row);
+			DataRecordImpl dataRecord = mDataCollection.get(row);
 			for (int col = 0; col < HEADERS.length; col++) {
 				DataEntry dataEntry = dataRecord.get(col);
 				assertEquals(HEADERS[col], dataEntry.getKey());
@@ -50,14 +48,14 @@ public class DataCollectionTest extends TestCase {
 
 	public void testFilter() {
 		int originalSize = mDataCollection.size();
-		assertNull(mDataCollection.getFilter(HEADERS[1]));
-		mDataCollection.putFilter(HEADERS[1], new ValueFilter() {
+		assertNull(mDataCollection.getColumnFilter(HEADERS[1]));
+		mDataCollection.putColumnFilter(HEADERS[1], new ValueFilter() {
 			@Override
 			public boolean isMatch(String value) {
 				return VALUES[0][1].equals(value);
 			}
 		});
-		assertNotNull(mDataCollection.getFilter(HEADERS[1]));
+		assertNotNull(mDataCollection.getColumnFilter(HEADERS[1]));
 		
 		// setting a filter doesn't turn on filtering
 		assertEquals(originalSize, mDataCollection.size());

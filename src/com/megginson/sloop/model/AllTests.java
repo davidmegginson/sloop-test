@@ -1,4 +1,8 @@
-package com.megginson.sloop.test.model;
+package com.megginson.sloop.model;
+
+import com.megginson.sloop.model.impl.DataCollectionTest;
+import com.megginson.sloop.model.impl.DataEntryTest;
+import com.megginson.sloop.model.impl.DataRecordTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

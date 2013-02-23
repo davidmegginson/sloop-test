@@ -1,4 +1,4 @@
-package com.megginson.sloop.test.model;
+package com.megginson.sloop.model;
 
 import junit.framework.TestCase;
 
