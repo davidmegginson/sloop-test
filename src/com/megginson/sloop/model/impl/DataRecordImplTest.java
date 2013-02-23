@@ -24,12 +24,12 @@ public class DataRecordImplTest extends TestCase {
 	}
 
 	public void testSize() {
-		assertEquals(HEADERS.length, mDataRecord.size());
+		assertEquals(HEADERS.length, mDataRecord.getEntries().size());
 	}
 
 	public void testGetInt() {
 		for (int i = 0; i < HEADERS.length; i++) {
-			DataEntry entry = mDataRecord.get(i);
+			DataEntry entry = mDataRecord.getEntries().get(i);
 			assertEquals(HEADERS[i], entry.getKey());
 			assertEquals(VALUES[i], entry.getValue());
 			assertEquals(FILTER_FLAGS[i], entry.hasFilter());
