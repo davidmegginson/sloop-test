@@ -1,12 +1,9 @@
 package com.megginson.sloop.model.impl;
 
+import junit.framework.TestCase;
 import android.os.Parcel;
 
 import com.megginson.sloop.model.DataEntry;
-import com.megginson.sloop.model.impl.DataEntryImpl;
-import com.megginson.sloop.model.impl.DataRecordImpl;
-
-import junit.framework.TestCase;
 
 public class DataRecordTest extends TestCase {
 
