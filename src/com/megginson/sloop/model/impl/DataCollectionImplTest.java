@@ -67,6 +67,7 @@ public class DataCollectionImplTest extends TestCase {
 		// after turning on filtering, the sizes should be different
 		mDataCollection.setFilteringEnabled(true);
 		assertTrue(originalSize > mDataCollection.getFilteredRecords().size());
+		assertEquals(2, mDataCollection.getFilteredRecords().size());
 		assertEquals(originalSize, mDataCollection.getRecords().size());
 	}
 	
@@ -88,6 +89,7 @@ public class DataCollectionImplTest extends TestCase {
 		// after turning on filtering, the sizes should be different
 		mDataCollection.setFilteringEnabled(true);
 		assertTrue(originalSize > mDataCollection.getFilteredRecords().size());
+		assertEquals(2, mDataCollection.getFilteredRecords().size());
 		assertEquals(originalSize, mDataCollection.getRecords().size());		
 	}
 
