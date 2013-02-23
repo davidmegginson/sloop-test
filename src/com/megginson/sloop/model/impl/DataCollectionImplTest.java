@@ -69,12 +69,26 @@ public class DataCollectionImplTest extends TestCase {
 		assertTrue(originalSize > mDataCollection.getFilteredRecords().size());
 		assertEquals(originalSize, mDataCollection.getRecords().size());
 	}
-
-	public void testSearch() {
-		assertEquals(-1, mDataCollection.search("foo", 0));
-		assertEquals(0, mDataCollection.search(VALUES[0][0], 0));
-		assertEquals(-1, mDataCollection.search(VALUES[0][0], 1));
-		assertEquals(2, mDataCollection.search(VALUES[2][2], 0));
+	
+	public void testTextFilter() {
+		int originalSize = mDataCollection.getFilteredRecords().size();
+		assertNull(mDataCollection.getTextFilter());
+		mDataCollection.setTextFilter(new ValueFilter() {
+			@Override
+			public boolean isMatch(String value) {
+				return value.contains("B");
+			}
+		});
+		assertNotNull(mDataCollection.getTextFilter());
+		
+		// setting a filter doesn't turn on filtering
+		assertEquals(originalSize, mDataCollection.getFilteredRecords().size());
+		assertEquals(originalSize, mDataCollection.getRecords().size());
+		
+		// after turning on filtering, the sizes should be different
+		mDataCollection.setFilteringEnabled(true);
+		assertTrue(originalSize > mDataCollection.getFilteredRecords().size());
+		assertEquals(originalSize, mDataCollection.getRecords().size());		
 	}
 
 }
