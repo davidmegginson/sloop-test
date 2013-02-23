@@ -5,14 +5,15 @@ import android.os.Parcel;
 
 import com.megginson.sloop.model.DataEntry;
 
-public class DataEntryTest extends TestCase {
+public class DataEntryImplTest extends TestCase {
 	
 	private final static String KEY = "test key";
 	private final static String VALUE = "test value";
 	private final static String KEY2 = "alternative test key";
 	private final static String VALUE2 = "alternative test value";
 	
-	private DataEntryImpl mDataEntry;
+	// test against the interface, not the implementation
+	private DataEntry mDataEntry;
 
 	protected void setUp() throws Exception {
 		super.setUp();

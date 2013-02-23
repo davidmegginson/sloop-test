@@ -4,8 +4,9 @@ import junit.framework.TestCase;
 import android.os.Parcel;
 
 import com.megginson.sloop.model.DataEntry;
+import com.megginson.sloop.model.DataRecord;
 
-public class DataRecordTest extends TestCase {
+public class DataRecordImplTest extends TestCase {
 
 	private final static String HEADERS[] = { "Column 1", "Column 2",
 			"Column 3", };
@@ -14,7 +15,8 @@ public class DataRecordTest extends TestCase {
 
 	private final static boolean FILTER_FLAGS[] = { false, true, false, };
 
-	private DataRecordImpl mDataRecord;
+	// test against the interface, not the implementation
+	private DataRecord mDataRecord;
 
 	protected void setUp() throws Exception {
 		super.setUp();

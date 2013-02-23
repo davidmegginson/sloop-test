@@ -2,10 +2,12 @@ package com.megginson.sloop.model.impl;
 
 import junit.framework.TestCase;
 
+import com.megginson.sloop.model.DataCollection;
 import com.megginson.sloop.model.DataEntry;
+import com.megginson.sloop.model.DataRecord;
 import com.megginson.sloop.model.ValueFilter;
 
-public class DataCollectionTest extends TestCase {
+public class DataCollectionImplTest extends TestCase {
 
 	private final static String HEADERS[] = { "A", "B", "C", };
 	
@@ -15,13 +17,14 @@ public class DataCollectionTest extends TestCase {
 		{ "A3", "B", "C3" },
 	};
 
-	private DataCollectionImpl mDataCollection;
+	// test against the interface, not the implementation
+	private DataCollection mDataCollection;
 
 	protected void setUp() throws Exception {
 		super.setUp();
 		mDataCollection = new DataCollectionImpl(HEADERS);
 		for (String row[] : VALUES) {
-			mDataCollection.addRecord(row);
+			((DataCollectionImpl)mDataCollection).addRecord(row);
 		}
 	}
 
@@ -31,7 +34,7 @@ public class DataCollectionTest extends TestCase {
 
 	public void testGet() {
 		for (int row = 0; row < VALUES.length; row++) {
-			DataRecordImpl dataRecord = mDataCollection.get(row);
+			DataRecord dataRecord = mDataCollection.get(row);
 			for (int col = 0; col < HEADERS.length; col++) {
 				DataEntry dataEntry = dataRecord.get(col);
 				assertEquals(HEADERS[col], dataEntry.getKey());
@@ -46,7 +49,7 @@ public class DataCollectionTest extends TestCase {
 		assertTrue(mDataCollection.isFiltered());
 	}
 
-	public void testFilter() {
+	public void testColumnFilter() {
 		int originalSize = mDataCollection.size();
 		assertNull(mDataCollection.getColumnFilter(HEADERS[1]));
 		mDataCollection.putColumnFilter(HEADERS[1], new ValueFilter() {
